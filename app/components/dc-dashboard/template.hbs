@@ -1,0 +1,141 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="pie chart-panel panel panel-default col-md-12">
+        <div class="half-screen panel-body" >
+        <h4 class="text-center">Hourly Locations</h4>
+          {{dc-dashboard/pie-chart
+            dimension=companyDim
+            colors=colors
+            id='piechart'
+          }}
+        </div>
+      </div>
+      <div class="buttons-panel chart-panel panel panel-default col-md-12">
+        {{!-- <h4 class="text-center">{{cityName}} {{code}} Pricing Distribution</h4> --}}
+        <div class="half-screen panel-body row" >
+          <div class="col-md-3">
+            {{#if isToday}}
+              {{#link-to 'dashboard.dates.date' 'yesterday' tagName='button' classNames="btn btn-default change-date"}}
+                <span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                Yesterday
+              {{/link-to}}
+              {{!-- <button type="button" class="btn btn-default change-date" {{action}}>Yesterday</button> --}}
+            {{/if}}
+          </div>
+          <div class="col-md-6 text-center current-date">
+            <h3>{{eastCoastDate}}</h3>
+            <button type="button" class="btn btn-primary" {{action "resetCharts"}}>Reset Charts</button>
+          </div>
+          <div class="col-md-3">
+            {{#if isYesterday}}
+              {{#link-to 'dashboard.dates.date' 'today' tagName='button' classNames="btn btn-default change-date today"}}
+                Today
+                <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              {{/link-to}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="chart-panel panel panel-default">
+        <h5 class="text-center">Distribution of Hourly Location Prices</h5>
+        <div class="half-screen panel-body" >
+          {{dc-dashboard/dual-histogram
+            dimension=priceDim
+            group1=priceGroupCount.spotHero
+            group2=priceGroupCount.parkWhiz
+            colors=colors
+            xLabel="Prices ($)"
+            yLabel="# of Locations"
+            id='priceDistribs'
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="text-center">Time of Day</h2>
+      <div class="chart-panel panel panel-default ">
+        <h5 class="text-center">Number of Locations by Hour of Day</h5>
+        <div class="half-screen panel-body" >
+          {{dc-dashboard/dual-histogram
+            dimension=hourDim
+            group1=hourGroupCount.spotHero
+            group2=hourGroupCount.parkWhiz
+            xLabel="Hour Of Day"
+            yLabel="# of Locations"
+            colors=colors
+            id='hourDistribs'
+          }}
+        </div>
+      </div>
+      <div class="chart-panel panel panel-default ">
+        <h5 class="text-center">Median Hourly Price by Hour of Day</h5>
+        <div class="half-screen panel-body" >
+          {{dc-dashboard/dual-histogram
+            dimension=hourGroupMedianPrice.dim
+            group1=hourGroupMedianPrice.groups.spotHero
+            group2=hourGroupMedianPrice.groups.parkWhiz
+            colors=colors
+            xLabel="Hour Of Day"
+            yLabel="Price ($)"
+            id='hourPriceDistribs'
+          }}
+        </div>
+      </div>
+      <div class="pie chart-panel panel panel-default col-md-12">
+        <div class="half-screen panel-body" >
+        <h4 class="text-center">Mobile Passes</h4>
+          {{dc-dashboard/bar-chart
+            dimension=mobileGroupCount.dim
+            group1=mobileGroupCount.groups.spotHero
+            group2=mobileGroupCount.groups.parkWhiz
+            colors=colors
+            yLabel="# of Locations"
+            id='mobileCountDistribs'
+          }}
+          {{dc-dashboard/pie-chart
+            dimension=mobileDim
+            colors=colors
+            id='piechart2'
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <h2 class="text-center">Cities</h2>
+      <div class="chart-panel panel panel-default">
+        <h5 class="text-center">Number of Locations by City</h5>
+        <div class="half-screen panel-body" >
+          {{dc-dashboard/bar-chart
+            dimension=cityDim
+            group1=cityGroupCount.spotHero
+            group2=cityGroupCount.parkWhiz
+            colors=colors
+            yLabel="# of Locations"
+            id='cityCountDistribs'
+          }}
+        </div>
+      </div>
+      <div class="chart-panel panel panel-default ">
+        <h5 class="text-center">Median Hourly Price by City</h5>
+        <div class="half-screen panel-body" >
+          {{dc-dashboard/bar-chart
+            dimension=cityGroupMedianPrice.dim
+            group1=cityGroupMedianPrice.groups.spotHero
+            group2=cityGroupMedianPrice.groups.parkWhiz
+            colors=colors
+            yLabel="Price ($)"
+            id='cityDistribs'
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

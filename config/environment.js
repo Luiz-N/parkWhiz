@@ -4,8 +4,20 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'spothero-demo',
     environment: environment,
+    contentSecurityPolicy:
+      { 'connect-src': "*",
+        'default-src': "'none'",
+        'script-src' : "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+        'font-src': "'self' fonts.gstatic.com",
+        'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com",
+        'img-src' : "*"
+      },
+    firebase: 'https://zipcode-saver.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
+    googleMap: {
+      libraries: ['visualization']
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

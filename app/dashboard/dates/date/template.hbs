@@ -1,0 +1,15 @@
+{{!-- {{model.spots}} --}}
+{{#if currentlyLoading}}
+  <div class="loading-screen row text-center">
+    <h2>
+      Loading...
+    </h2>
+  </div>
+{{/if}}
+<div class="col-md-12">
+  {{dc-dashboard
+    date=model
+    currentlyLoading=currentlyLoading
+  }}
+</div>
+{{outlet}}

@@ -1,0 +1,95 @@
+body {
+  background: whitesmoke;
+}
+
+.sub._1 rect {
+  pointer-events: none;
+}
+nav a.active {
+  background: white;
+}
+
+.loading-screen {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  opacity: .75;
+  padding-top: 20%;
+}
+
+.dc-chart rect {
+  mix-blend-mode: multiply;
+}
+
+.pie {
+  padding-left: 0;
+}
+
+.pie .panel-body {
+  padding-left: 0;
+}
+
+.stack {
+  background-color: white;
+}
+
+.buttons-panel .row{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttons-panel div{
+  padding: 0;
+}
+
+.buttons-panel button{
+  padding: 0;
+  width: 95%;
+}
+
+.buttons-panel .current-date button{
+  padding: .5em;
+  width: 90%;
+  margin: 1em 0 2em 0;
+}
+
+.buttons-panel .change-date {
+  position: absolute;
+  height: 100%;
+}
+
+.buttons-panel .change-date.today {
+  right: 0;
+}
+
+.chart-panel h4 {
+  margin-top: 0;
+}
+
+.dc-data-count {
+  margin: 0;
+}
+
+.dc-data-count h3 {
+  margin: 10px;
+}
+
+.map-side g {
+  cursor: pointer;
+}
+.map-side path {
+  stroke: white;
+}
+
+.map-side .deselected path {
+  stroke: white;
+}
+
+.ember-cli-g-map {
+    height: 300px;
+}
