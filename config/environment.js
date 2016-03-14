@@ -7,7 +7,7 @@ module.exports = function(environment) {
     contentSecurityPolicy:
       { 'connect-src': "*",
         'default-src': "'none'",
-        'script-src' : "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+        'script-src' : "'self' 'unsafe-eval' 'unsafe-inline' *",
         'font-src': "'self' fonts.gstatic.com",
         'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com",
         'img-src' : "*"
@@ -15,9 +15,6 @@ module.exports = function(environment) {
     firebase: 'https://zipcode-saver.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
-    googleMap: {
-      libraries: ['visualization']
-    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

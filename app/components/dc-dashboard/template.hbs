@@ -14,7 +14,7 @@
       <div class="buttons-panel chart-panel panel panel-default col-md-12">
         {{!-- <h4 class="text-center">{{cityName}} {{code}} Pricing Distribution</h4> --}}
         <div class="half-screen panel-body row" >
-          <div class="col-md-3">
+          <div class="col-md-3" {{action "sendEvent" "yesterday"}}>
             {{#if isToday}}
               {{#link-to 'dashboard.dates.date' 'yesterday' tagName='button' classNames="btn btn-default change-date"}}
                 <span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -27,7 +27,7 @@
             <h3>{{eastCoastDate}}</h3>
             <button type="button" class="btn btn-primary" {{action "resetCharts"}}>Reset Charts</button>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" {{action "sendEvent" "today"}}>
             {{#if isYesterday}}
               {{#link-to 'dashboard.dates.date' 'today' tagName='button' classNames="btn btn-default change-date today"}}
                 Today
@@ -98,11 +98,11 @@
             yLabel="# of Locations"
             id='mobileCountDistribs'
           }}
-          {{dc-dashboard/pie-chart
+{{!--           {{dc-dashboard/pie-chart
             dimension=mobileDim
             colors=colors
             id='piechart2'
-          }}
+          }} --}}
         </div>
       </div>
     </div>

@@ -2,6 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
+  beforeModel (p) {
+    let tag = p.state.queryParams.t;
+    if (tag) {
+      ga('send', 'event', 'taggedViewer', tag);
+    }
+  },
+
   model(params) {
     // let cachedDate = this.store.peekRecord('params.date_id');
 
@@ -28,6 +35,9 @@ export default Ember.Route.extend({
     loading(transition) {
       let controller = this.controllerFor('dashboard.dates.date');
       controller.set('currentlyLoading', true);
+      // let ary = transition.intent.url.split('/')
+      // let date = ary.length ? ary[ary.length -1].split("?")[0] : 'none';
+      // ga('send', 'event', 'loading', date);
       transition.promise.finally(function() {
           controller.set('currentlyLoading', false);
       });

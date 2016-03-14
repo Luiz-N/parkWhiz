@@ -77,8 +77,9 @@ export default Ember.Component.extend({
   hourGroupCount:Ember.computed('cfData', function() {
     let hourDim = this.get('hourDim');
     let resp = {}
-    resp['spotHero'] = reductio().filter(function(d) {return d.company === "spotHero";}).count(true)(hourDim.group());
-    resp['parkWhiz'] = reductio().filter(function(d) {return d.company === "parkWhiz";}).count(true)(hourDim.group());
+    // resp['spotHero'] = reductio().filter(function(d) {return d.company === "spotHero";}).count(true)(hourDim.group());
+    // resp['parkWhiz'] = reductio().filter(function(d) {return d.company === "parkWhiz";}).count(true)(hourDim.group());
+    return this.get('createCountGroups')(hourDim);
     return resp;
   }),
 
@@ -180,8 +181,12 @@ export default Ember.Component.extend({
         e.dispatchEvent(d3Click)
         // $(e).attr("display") ? e.dispatchEvent(d3Click) : null;
       })
-      // ga('send', 'event', 'charts', 'reset');
+      ga('send', 'event', 'charts', 'reset');
     },
+
+    sendEvent: function(date){
+      ga('send', 'event', 'newDay', date);
+    }
 
   }
 });
