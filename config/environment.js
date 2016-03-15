@@ -8,8 +8,8 @@ module.exports = function(environment) {
       { 'connect-src': "*",
         'default-src': "'none'",
         'script-src' : "'self' 'unsafe-eval' 'unsafe-inline' *",
-        'font-src': "'self' fonts.gstatic.com",
-        'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com",
+        'font-src': "'self' maxcdn.bootstrapcdn.com",
+        'style-src': "'self' 'unsafe-inline' maxcdn.bootstrapcdn.com",
         'img-src' : "*"
       },
     firebase: 'https://zipcode-saver.firebaseio.com/',

@@ -16,12 +16,11 @@ export default Ember.Route.extend({
     return date
       .then(function(date){
         let spots = date.get('spots')
-        if (!!spots) {
-          return spots;
-        }
         let spotUrl = date.get('url');
         return new Ember.RSVP.Promise(function(resolve) {
-          d3.csv(spotUrl+"?v="+Math.random(), function(err, data) {
+          let d = new Date();
+          let val = d.setMinutes(0,0,0);
+          d3.csv(spotUrl+"?v="+val, function(err, data) {
             resolve(data);
           })
         });
@@ -35,9 +34,6 @@ export default Ember.Route.extend({
     loading(transition) {
       let controller = this.controllerFor('dashboard.dates.date');
       controller.set('currentlyLoading', true);
-      // let ary = transition.intent.url.split('/')
-      // let date = ary.length ? ary[ary.length -1].split("?")[0] : 'none';
-      // ga('send', 'event', 'loading', date);
       transition.promise.finally(function() {
           controller.set('currentlyLoading', false);
       });
