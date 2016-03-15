@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
 
   noSelectedDate: Ember.computed.equal('target.currentPath', 'dashboard.index'),
 
-  init(x,y,z) {
+  init() {
     Ember.run.schedule("afterRender",this,function() {
       if (this.get('noSelectedDate')) {
         this.transitionToRoute('dashboard.dates.date', 'today');

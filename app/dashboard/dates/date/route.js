@@ -2,13 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  beforeModel (p) {
-    let tag = p.state.queryParams.t;
-    if (tag) {
-      ga('send', 'event', 'taggedViewer', tag);
-    }
-  },
-
   model(params) {
     // let cachedDate = this.store.peekRecord('params.date_id');
 
