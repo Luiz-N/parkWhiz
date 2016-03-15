@@ -10,16 +10,12 @@
     "ember-resolver": "~0.1.18",
     "jquery": "^1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.20.0",
     "es5-shim": "^4.0.5",
     "pretender": "~0.10.1",
     "lodash": "~3.7.0",
     "bootstrap": "~3.3.5",
     "dcjs": "1.7.5",
-    "firebase": "^2.1.0",
-    "leaflet": "~0.7.7",
-    "leaflet.markercluster": "~0.4.0-hotfix.1",
-    "gmaps-for-apps": "~0.5.9"
+    "firebase": "^2.1.0"
   },
   "resolutions": {
     "qunit-notifications": "~0.1.0",

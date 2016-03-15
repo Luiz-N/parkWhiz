@@ -102,14 +102,17 @@ export default Ember.Component.extend({
 
       if (this.get('xLabel').indexOf("Hour") != -1) {
         compositeChart
-          .xAxis()
+          .xAxis().tickValues([0,2,4,6,8,10,12,14,16,18,20,22])
           .tickFormat(function(v, i) {
             // let units = ["Prep Phase", "Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5", "Presentations"];
             if (v > 12) {
               return v - 12;
             }
+            else if (v === 12) {
+              return 'noon';
+            }
             else if (v === 0) {
-              return 12;
+              return 'midnight';
             }
             return v;
           })
