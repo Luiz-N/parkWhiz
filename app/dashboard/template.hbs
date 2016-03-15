@@ -1,5 +1,12 @@
 
 <div class="container col-md-12">
+  {{#if noSelectedDate}}
+    <div class="loading-screen row text-center">
+      <h2>
+        Loading...
+      </h2>
+    </div>
+  {{/if}}
   {{!-- <div class="row">
     <ul>
       {{#each model as |city|}}
