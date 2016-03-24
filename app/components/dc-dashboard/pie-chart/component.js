@@ -7,10 +7,8 @@ export default Ember.Component.extend({
   width: 500,
   height: 200,
   data: null,
-
-  // id: Ember.computed('code', function() {
-  //   return this.get('code') + "countWidget";
-  // }),
+  // colors: ['rgba(1,112,223,.4)', 'rgba(255,0,0,.4)', 'green'],
+  colors: ['black', 'rgba(255,0,0,.4)', 'rgba(1,112,223,.4)'],
 
   draw: Ember.on('didRender', function() {
 
@@ -24,9 +22,29 @@ export default Ember.Component.extend({
         .dimension(this.get('dimension'))
         .group(this.get('dimension').group())
         .colors(this.get('colors'))
-        .colorAccessor(function(d, i){
-          return i === 0 ? 1 : 0;
+        .label(function(d,i) {
+          return d.data.key === "both" ? "shared *" : d.data.key;
         })
+        // .on('postRender', function(chart) {
+        //   let svg = chart.svg()[0][0]
+        //   let t = textures.lines()
+        //     .orientation("diagonal")
+        //     .size(40)
+        //     .strokeWidth(26)
+        //     .stroke("darkorange")
+        //     .background("firebrick");
+          // d3.select(svg).call(t)
+          // d3.select('.pie-slice._0 path').style('fill', t.url())
+          // let sharedSlice = chart.selectAll('.pie-slice._0 path')[0][0];
+          // $(sharedSlice).css('fill', t.url())
+          // console.log(t.url())
+        // })
+        // .on('postRender', function(chart) {
+        //   debugger;
+        // })
+        // .colorAccessor(function(d, i){
+        //   return i === 0 ? 1 : 0;
+        // })
   })
 
 });

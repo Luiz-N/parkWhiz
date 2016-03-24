@@ -28,13 +28,6 @@ export default Ember.Component.extend({
 
   cfData: Ember.computed('date', function() {
     let data = this.get('date.spots');
-
-    // data.forEach((d) => {
-    //   let localTime = d.timestamp.split(":",2).join(":");
-    //   d.hour = d.hour ? +d.hour : moment(localTime).hour();
-    // })
-
-    // console.log(data[0]);
     return crossfilter(data);
   }),
 
@@ -50,6 +43,10 @@ export default Ember.Component.extend({
   avgZipPriceGroup: Ember.computed('cfData', function() {
     let zipDim = this.get('zipDim').group()
     return reductio().avg(function(d) {return d.price;})(zipDim);
+  }),
+
+  belongsToDim:Ember.computed('cfData', function() {
+    return this.get('cfData').dimension(function(d) {return d.belongsTo ? d.belongsTo : d.company;});
   }),
 
   companyDim:Ember.computed('cfData', function() {
@@ -138,16 +135,6 @@ export default Ember.Component.extend({
         }
     };
   },
-
-  // filterCityGroup: function(group, city) {
-  //   return {
-  //       all:function () {
-  //           return group.all().filter(function(d, v) {
-  //               return !!d.key;
-  //           });
-  //       }
-  //   };
-  // },
 
   createCountGroups: function(dim, median) {
     let resp = {};

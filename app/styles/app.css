@@ -23,12 +23,22 @@ nav a.active {
   mix-blend-mode: multiply;
 }
 
+.chart-panel .panel-body {
+  overflow: hidden;
+  padding-left: 10px;
+}
+
 .pie {
   padding-left: 0;
 }
 
 .pie .panel-body {
   padding-left: 0;
+  margin-left: -15px;
+}
+
+.pie span {
+  font-size: 12px;
 }
 
 .stack {
@@ -41,6 +51,7 @@ nav a.active {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
 }
 
 .buttons-panel div{
@@ -69,6 +80,7 @@ nav a.active {
 
 .chart-panel h4 {
   margin-top: 0;
+  padding-left: 15px;
 }
 
 .dc-data-count {
