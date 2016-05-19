@@ -25,6 +25,9 @@ export default Ember.Component.extend({
         .label(function(d,i) {
           return d.data.key === "both" ? "shared *" : d.data.key;
         })
+        .valueAccessor(function(d,i) {
+          return d.key === "both" ? d.value/2 : d.value;
+        })
         // .on('postRender', function(chart) {
         //   let svg = chart.svg()[0][0]
         //   let t = textures.lines()
